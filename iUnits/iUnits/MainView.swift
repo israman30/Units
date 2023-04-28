@@ -7,6 +7,22 @@
 
 import SwiftUI
 
+struct Unit: Identifiable {
+    var id = UUID()
+    let image: String
+}
+
+class UnitViewModel: ObservableObject {
+    @Published var images = [Unit]()
+    @Published var isPresented: Unit? = nil
+    
+    init() {
+        images = [
+            Unit(image: "ruler"), Unit(image: "water.waves"), Unit(image: "speedometer"), Unit(image: "heat.element.windshield")
+        ]
+    }
+}
+
 struct MainView: View {
     
     var data = Array(1...20)
@@ -14,24 +30,23 @@ struct MainView: View {
         Array(repeating: GridItem(.flexible()), count: 2)
     }
     
-    var images = ["ruler", "water.waves", "speedometer", "heat.element.windshield"]
-    @State var isPresented = false
+    @StateObject private var vm = UnitViewModel()
     
     var body: some View {
         NavigationView {
             ScrollView(.vertical) {
                 LazyVGrid(columns: adaptiveColumns, spacing: 10) {
-                    ForEach(images, id: \.self) { image in
-                        GridItemView(image: image)
+                    ForEach(vm.images) { unit in
+                        GridItemView(image: unit.image)
                             .onTapGesture {
                                 print("tap")
-                                self.isPresented = true
+                                self.vm.isPresented = unit
                             }
                     }
+                    .sheet(item: $vm.isPresented) { unit in
+                        GridItemView(image: unit.image)
+                    }
                 }
-                .sheet(isPresented: $isPresented, content: {
-                    EmptyView()
-                })
                 .padding()
             }
             .navigationTitle("iUnits")
