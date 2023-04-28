@@ -44,7 +44,7 @@ struct MainView: View {
                             }
                     }
                     .sheet(item: $vm.isPresented) { unit in
-                        GridItemView(image: unit.image)
+                        GridItemDetailView(image: unit.image)
                     }
                 }
                 .padding()
