@@ -43,7 +43,7 @@ struct MainView: View {
                                 self.vm.isPresented = unit
                             }
                     }
-                    .sheet(item: $vm.isPresented) { unit in
+                    .fullScreenCover(item: $vm.isPresented) { unit in
                         GridItemDetailView(image: unit.image)
                     }
                 }
