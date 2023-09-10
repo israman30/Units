@@ -15,6 +15,7 @@
 		4D15AE6829FAEDA7006E0692 /* iUnits.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4D15AE6629FAEDA7006E0692 /* iUnits.xcdatamodeld */; };
 		4D15AE6F29FAF083006E0692 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D15AE6E29FAF083006E0692 /* MainView.swift */; };
 		4D15AE7129FB6218006E0692 /* GridItemDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D15AE7029FB6218006E0692 /* GridItemDetailView.swift */; };
+		4D15AE7329FB6C59006E0692 /* UnitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D15AE7229FB6C59006E0692 /* UnitView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		4D15AE6729FAEDA7006E0692 /* iUnits.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iUnits.xcdatamodel; sourceTree = "<group>"; };
 		4D15AE6E29FAF083006E0692 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		4D15AE7029FB6218006E0692 /* GridItemDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridItemDetailView.swift; sourceTree = "<group>"; };
+		4D15AE7229FB6C59006E0692 /* UnitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				4D15AE5B29FAEDA6006E0692 /* iUnitsApp.swift */,
 				4D15AE5D29FAEDA6006E0692 /* ContentView.swift */,
 				4D15AE6E29FAF083006E0692 /* MainView.swift */,
+				4D15AE7229FB6C59006E0692 /* UnitView.swift */,
 				4D15AE7029FB6218006E0692 /* GridItemDetailView.swift */,
 				4D15AE5F29FAEDA7006E0692 /* Assets.xcassets */,
 				4D15AE6429FAEDA7006E0692 /* Persistence.swift */,
@@ -155,6 +158,7 @@
 				4D15AE5C29FAEDA6006E0692 /* iUnitsApp.swift in Sources */,
 				4D15AE6F29FAF083006E0692 /* MainView.swift in Sources */,
 				4D15AE6829FAEDA7006E0692 /* iUnits.xcdatamodeld in Sources */,
+				4D15AE7329FB6C59006E0692 /* UnitView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

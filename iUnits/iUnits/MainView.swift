@@ -10,6 +10,7 @@ import SwiftUI
 struct Unit: Identifiable {
     var id = UUID()
     let image: String
+    let name: String
 }
 
 class UnitViewModel: ObservableObject {
@@ -18,7 +19,14 @@ class UnitViewModel: ObservableObject {
     
     init() {
         images = [
-            Unit(image: "ruler"), Unit(image: "water.waves"), Unit(image: "speedometer"), Unit(image: "heat.element.windshield")
+            Unit(image: "ruler", name: "Lenght"),
+            Unit(image: "water.waves", name: "Measurement"),
+            Unit(image: "speedometer", name: "Speed"),
+            Unit(image: "triangle", name: "Area"),
+            Unit(image: "cube.transparent", name: "Area"),
+            Unit(image: "soccerball.circle.inverse", name: "Mass"),
+            Unit(image: "t.circle", name: "Temperature"),
+            Unit(image: "backpack.circle", name: "Pressure")
         ]
     }
 }
@@ -37,7 +45,7 @@ struct MainView: View {
             ScrollView(.vertical) {
                 LazyVGrid(columns: adaptiveColumns, spacing: 10) {
                     ForEach(vm.images) { unit in
-                        GridItemView(image: unit.image)
+                        GridItemView(unit: unit)
                             .onTapGesture {
                                 print("tap")
                                 self.vm.isPresented = unit
@@ -64,14 +72,29 @@ struct MainView_Previews: PreviewProvider {
 
 struct GridItemView: View {
     
-    var image: String
+    var unit: Unit
     
     var body: some View {
-        ZStack(alignment: .center) {
-            Spacer()
-            Image(systemName: image)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
+        VStack(alignment: .center) {
+            VStack(alignment: .leading) {
+                HStack {
+                    Spacer()
+                    VStack {
+                        Image(systemName: unit.image)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                    }
+                    .frame(width: 80, height: 50)
+                    
+                }
+                
+                Spacer()
+                
+                Text(unit.name)
+                    .font(.title2)
+                    .fontWeight(.bold)
+            }
+            
         }
         .frame(height: 150)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
