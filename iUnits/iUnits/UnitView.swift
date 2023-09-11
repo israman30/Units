@@ -31,15 +31,6 @@ struct UnitView: View {
     @State var outputUnits = 0
     
     var result: Double {
-        let value = (Double(inpuText) ?? 0) / 0.01
-        
-        var inputAsFeet: Double = 0
-        var output: Double = 0
-        
-//        switch lengthFrom[inputUnitValue].lowercased() {
-//        case "mm":
-//            
-//        }
         
         return output
     }

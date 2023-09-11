@@ -11,23 +11,15 @@ enum Length: String, CaseIterable {
     case millimeters
     case centimeters
     case meters
-    case kilimeters
+    case kilometers
     case miles
+    case inches
+    case feet
+    case yards
 }
 
 
 struct CaculationsView: View {
-    
-    @State var inputText = ""
-    @State var units = ["centimeters", "meters", "kilometers", "miles"]
-    @State var selectedUnitFrom: Length = .meters
-    @State var selectedUnitTo: Length = .centimeters
-    
-//    @State var inputUnitValue = 0
-//    @State var oututUnitValue = 0
-//    @State var unitConverted = 0
-    
-    
     
     @State private var inputValue = ""
     @State private var outputValue = ""
@@ -35,8 +27,8 @@ struct CaculationsView: View {
     @State private var inputUnitValue = 2
     @State private var outputUnitValue = 2
     
-    @State var inputUnits = ["meters", "feet", "miles"]
-    @State var outputUnits = ["meters", "feet", "miles"]
+    @State var inputUnits: [Length] = [.millimeters, .inches, .centimeters, .feet, .meters, .yards, .kilometers, .miles]
+    @State var outputUnits: [Length] = [.millimeters, .inches, .centimeters, .feet, .meters, .yards, .kilometers, .miles]
     
     var result: String {
         
@@ -44,41 +36,42 @@ struct CaculationsView: View {
         var input = Measurement(value: 0, unit: UnitLength.meters)
         
         switch inputUnits[inputUnitValue] {
-        case "meters":
+        case .inches:
+            input = Measurement(value: Double(inputValue) ?? 0, unit: UnitLength.inches)
+        case .millimeters:
+            input = Measurement(value: Double(inputValue) ?? 0, unit: UnitLength.millimeters)
+        case .meters:
             input = Measurement(value: Double(inputValue) ?? 0, unit: UnitLength.meters)
-        case "feet":
+        case .feet:
             input = Measurement(value: Double(inputValue) ?? 0, unit: UnitLength.feet)
-        case "miles":
+        case .yards:
+            input = Measurement(value: Double(inputValue) ?? 0, unit: UnitLength.yards)
+        case .kilometers:
+            input = Measurement(value: Double(inputValue) ?? 0, unit: UnitLength.kilometers)
+        case .miles:
             input = Measurement(value: Double(inputValue) ?? 0, unit: UnitLength.miles)
         default:
             input = Measurement(value: Double(inputValue) ?? 0, unit: UnitLength.meters)
         }
         
         switch outputUnits[outputUnitValue] {
-        case "meters":
-            output = "\(input.converted(to: UnitLength.meters))"
-        case "feet":
+        case .inches:
+            output = "\(input.converted(to: UnitLength.inches))"
+        case .millimeters:
+            output = "\(input.converted(to: UnitLength.millimeters))"
+        case .feet:
             output = "\(input.converted(to: UnitLength.feet))"
-        case "miles":
+        case .meters:
+            output = "\(input.converted(to: UnitLength.meters))"
+        case .yards:
+            output = "\(input.converted(to: UnitLength.yards))"
+        case .kilometers:
+            output = "\(input.converted(to: UnitLength.kilometers))"
+        case .miles:
             output = "\(input.converted(to: UnitLength.miles))"
         default:
             output = "\(input.converted(to: UnitLength.meters))"
         }
-        
-//        var value = Int(inputText)!
-        
-//        switch Length.allCases[inputUnitValue] {
-//        case .millimeters:
-//            unitConverted = value * Int(0.1)
-//        case .centimeters:
-//            unitConverted = value
-//        case .meters:
-//            unitConverted = value * 100
-//        case .kilimeters:
-//            break
-//        case .miles:
-//            break
-//        }
         
         return output
     }
@@ -108,13 +101,13 @@ struct CaculationsView: View {
                 Text("From")
                 Picker("", selection: $inputUnitValue) {
                     ForEach(0..<inputUnits.count, id: \.self) { unit in
-                        Text("\(inputUnits[unit])")
+                        Text("\(inputUnits[unit].rawValue)")
                     }
                 }
                 Text("To")
                 Picker("", selection: $outputUnitValue) {
                     ForEach(0..<outputUnits.count, id: \.self) { unit in
-                        Text("\(outputUnits[unit])")
+                        Text("\(outputUnits[unit].rawValue)")
                     }
                 }
             }
