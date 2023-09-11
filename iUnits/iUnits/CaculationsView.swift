@@ -23,35 +23,71 @@ struct CaculationsView: View {
     @State var selectedUnitFrom: Length = .meters
     @State var selectedUnitTo: Length = .centimeters
     
-    @State var inputUnitValue = 0
-    @State var oututUnitValue = 0
-    @State var unitConverted = 0
+//    @State var inputUnitValue = 0
+//    @State var oututUnitValue = 0
+//    @State var unitConverted = 0
     
-    var result: Double {
+    
+    
+    @State private var inputValue = ""
+    @State private var outputValue = ""
+    
+    @State private var inputUnitValue = 2
+    @State private var outputUnitValue = 2
+    
+    @State var inputUnits = ["meters", "feet", "miles"]
+    @State var outputUnits = ["meters", "feet", "miles"]
+    
+    var result: String {
         
-        var value = Int(inputText)!
+        var output = ""
+        var input = Measurement(value: 0, unit: UnitLength.meters)
         
-        switch Length.allCases[inputUnitValue] {
-        case .millimeters:
-            unitConverted = value * Int(0.1)
-        case .centimeters:
-            unitConverted = value
-        case .meters:
-            unitConverted = value * 100
-        case .kilimeters:
-            break
-        case .miles:
-            break
+        switch inputUnits[inputUnitValue] {
+        case "meters":
+            input = Measurement(value: Double(inputValue) ?? 0, unit: UnitLength.meters)
+        case "feet":
+            input = Measurement(value: Double(inputValue) ?? 0, unit: UnitLength.feet)
+        case "miles":
+            input = Measurement(value: Double(inputValue) ?? 0, unit: UnitLength.miles)
+        default:
+            input = Measurement(value: Double(inputValue) ?? 0, unit: UnitLength.meters)
         }
         
-        return 0.0
+        switch outputUnits[outputUnitValue] {
+        case "meters":
+            output = "\(input.converted(to: UnitLength.meters))"
+        case "feet":
+            output = "\(input.converted(to: UnitLength.feet))"
+        case "miles":
+            output = "\(input.converted(to: UnitLength.miles))"
+        default:
+            output = "\(input.converted(to: UnitLength.meters))"
+        }
+        
+//        var value = Int(inputText)!
+        
+//        switch Length.allCases[inputUnitValue] {
+//        case .millimeters:
+//            unitConverted = value * Int(0.1)
+//        case .centimeters:
+//            unitConverted = value
+//        case .meters:
+//            unitConverted = value * 100
+//        case .kilimeters:
+//            break
+//        case .miles:
+//            break
+//        }
+        
+        return output
     }
     
     var body: some View {
         VStack(alignment: .leading) {
             VStack {
                 VStack(alignment: .leading) {
-                    TextField("Enter value", text: $inputText)
+                    TextField("Enter value", text: $inputValue)
                 }
                 .padding()
                 .cornerRadius(5)
@@ -62,7 +98,7 @@ struct CaculationsView: View {
                 .font(.title2)
                 .padding()
                 
-                Text("0.0")
+                Text(result)
                     .font(.largeTitle)
             }
             .padding(.vertical)
@@ -70,15 +106,15 @@ struct CaculationsView: View {
             
             VStack(alignment: .leading)  {
                 Text("From")
-                Picker("", selection: $selectedUnitFrom) {
-                    ForEach(Length.allCases, id: \.self) { unit in
-                        Text(unit.rawValue)
+                Picker("", selection: $inputUnitValue) {
+                    ForEach(0..<inputUnits.count, id: \.self) { unit in
+                        Text("\(inputUnits[unit])")
                     }
                 }
                 Text("To")
-                Picker("", selection: $selectedUnitTo) {
-                    ForEach(Length.allCases, id: \.self) { unit in
-                        Text(unit.rawValue)
+                Picker("", selection: $outputUnitValue) {
+                    ForEach(0..<outputUnits.count, id: \.self) { unit in
+                        Text("\(outputUnits[unit])")
                     }
                 }
             }
