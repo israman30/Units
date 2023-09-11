@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D0991EE2AAE8DDB001CA453 /* CaculationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0991ED2AAE8DDB001CA453 /* CaculationsView.swift */; };
 		4D15AE5C29FAEDA6006E0692 /* iUnitsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D15AE5B29FAEDA6006E0692 /* iUnitsApp.swift */; };
 		4D15AE5E29FAEDA6006E0692 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D15AE5D29FAEDA6006E0692 /* ContentView.swift */; };
 		4D15AE6029FAEDA7006E0692 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D15AE5F29FAEDA7006E0692 /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4D0991ED2AAE8DDB001CA453 /* CaculationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaculationsView.swift; sourceTree = "<group>"; };
 		4D15AE5829FAEDA6006E0692 /* iUnits.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iUnits.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D15AE5B29FAEDA6006E0692 /* iUnitsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iUnitsApp.swift; sourceTree = "<group>"; };
 		4D15AE5D29FAEDA6006E0692 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 				4D15AE5D29FAEDA6006E0692 /* ContentView.swift */,
 				4D15AE6E29FAF083006E0692 /* MainView.swift */,
 				4D15AE7229FB6C59006E0692 /* UnitView.swift */,
+				4D0991ED2AAE8DDB001CA453 /* CaculationsView.swift */,
 				4D15AE7029FB6218006E0692 /* GridItemDetailView.swift */,
 				4D15AE5F29FAEDA7006E0692 /* Assets.xcassets */,
 				4D15AE6429FAEDA7006E0692 /* Persistence.swift */,
@@ -153,6 +156,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D15AE6529FAEDA7006E0692 /* Persistence.swift in Sources */,
+				4D0991EE2AAE8DDB001CA453 /* CaculationsView.swift in Sources */,
 				4D15AE7129FB6218006E0692 /* GridItemDetailView.swift in Sources */,
 				4D15AE5E29FAEDA6006E0692 /* ContentView.swift in Sources */,
 				4D15AE5C29FAEDA6006E0692 /* iUnitsApp.swift in Sources */,

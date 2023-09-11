@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+//enum 
+
 struct Unit: Identifiable {
     var id = UUID()
     let image: String
