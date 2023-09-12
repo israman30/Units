@@ -36,12 +36,14 @@ struct CaculationsView: View {
         var input = Measurement(value: 0, unit: UnitLength.meters)
         
         switch inputUnits[inputUnitValue] {
+        case .meters:
+            input = Measurement(value: Double(inputValue) ?? 0, unit: UnitLength.meters)
         case .inches:
             input = Measurement(value: Double(inputValue) ?? 0, unit: UnitLength.inches)
         case .millimeters:
             input = Measurement(value: Double(inputValue) ?? 0, unit: UnitLength.millimeters)
-        case .meters:
-            input = Measurement(value: Double(inputValue) ?? 0, unit: UnitLength.meters)
+        case .centimeters:
+            input = Measurement(value: Double(inputValue) ?? 0, unit: UnitLength.centimeters)
         case .feet:
             input = Measurement(value: Double(inputValue) ?? 0, unit: UnitLength.feet)
         case .yards:
@@ -50,27 +52,25 @@ struct CaculationsView: View {
             input = Measurement(value: Double(inputValue) ?? 0, unit: UnitLength.kilometers)
         case .miles:
             input = Measurement(value: Double(inputValue) ?? 0, unit: UnitLength.miles)
-        default:
-            input = Measurement(value: Double(inputValue) ?? 0, unit: UnitLength.meters)
         }
         
         switch outputUnits[outputUnitValue] {
-        case .inches:
-            output = "\(input.converted(to: UnitLength.inches))"
-        case .millimeters:
-            output = "\(input.converted(to: UnitLength.millimeters))"
-        case .feet:
-            output = "\(input.converted(to: UnitLength.feet))"
         case .meters:
-            output = "\(input.converted(to: UnitLength.meters))"
+            output = String(describing: input.converted(to: UnitLength.meters))
+        case .inches:
+            output = String(describing: input.converted(to: UnitLength.inches))
+        case .millimeters:
+            output = String(describing: input.converted(to: UnitLength.millimeters))
+        case .centimeters:
+            output = String(describing: input.converted(to: UnitLength.centimeters))
+        case .feet:
+            output = String(describing: input.converted(to: UnitLength.feet))
         case .yards:
-            output = "\(input.converted(to: UnitLength.yards))"
+            output = String(describing: input.converted(to: UnitLength.yards))
         case .kilometers:
-            output = "\(input.converted(to: UnitLength.kilometers))"
+            output = String(describing: input.converted(to: UnitLength.kilometers))
         case .miles:
-            output = "\(input.converted(to: UnitLength.miles))"
-        default:
-            output = "\(input.converted(to: UnitLength.meters))"
+            output = String(describing: input.converted(to: UnitLength.miles))
         }
         
         return output

@@ -30,10 +30,10 @@ struct UnitView: View {
     @State var outUnitValue = 0
     @State var outputUnits = 0
     
-    var result: Double {
-        
-        return output
-    }
+//    var result: Double {
+//
+//        return result
+//    }
     
     var body: some View {
         NavigationView {
@@ -74,7 +74,7 @@ struct UnitView: View {
                     
                     Spacer()
                     
-                    Text(inpuText.isEmpty ? "0" : "\(result)")
+                    Text(inpuText.isEmpty ? "0" : "0")
                         .font(.largeTitle)
                         .foregroundColor(.black)
                         .fontWeight(.bold)
