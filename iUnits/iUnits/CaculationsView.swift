@@ -18,17 +18,15 @@ enum Length: String, CaseIterable {
     case yards
 }
 
-
-struct CaculationsView: View {
+class CalculationsViewModel: ObservableObject {
+    @Published var inputValue = ""
+    @Published var outputValue = ""
     
-    @State private var inputValue = ""
-    @State private var outputValue = ""
+    @Published var inputUnitValue = 2
+    @Published var outputUnitValue = 2
     
-    @State private var inputUnitValue = 2
-    @State private var outputUnitValue = 2
-    
-    @State var inputUnits: [Length] = [.millimeters, .inches, .centimeters, .feet, .meters, .yards, .kilometers, .miles]
-    @State var outputUnits: [Length] = [.millimeters, .inches, .centimeters, .feet, .meters, .yards, .kilometers, .miles]
+    @Published var inputUnits: [Length] = [.millimeters, .inches, .centimeters, .feet, .meters, .yards, .kilometers, .miles]
+    @Published var outputUnits: [Length] = [.millimeters, .inches, .centimeters, .feet, .meters, .yards, .kilometers, .miles]
     
     var result: String {
         
@@ -75,12 +73,22 @@ struct CaculationsView: View {
         
         return output
     }
+}
+
+
+struct CaculationsView: View {
+    
+    @StateObject private var vm: CalculationsViewModel
+    
+    init() {
+        self._vm = StateObject(wrappedValue: CalculationsViewModel())
+    }
     
     var body: some View {
         VStack(alignment: .leading) {
             VStack {
                 VStack(alignment: .leading) {
-                    TextField("Enter value", text: $inputValue)
+                    TextField("Enter value", text: $vm.inputValue)
                 }
                 .padding()
                 .cornerRadius(5)
@@ -91,7 +99,7 @@ struct CaculationsView: View {
                 .font(.title2)
                 .padding()
                 
-                Text(result)
+                Text(vm.result)
                     .font(.largeTitle)
             }
             .padding(.vertical)
@@ -99,15 +107,15 @@ struct CaculationsView: View {
             
             VStack(alignment: .leading)  {
                 Text("From")
-                Picker("", selection: $inputUnitValue) {
-                    ForEach(0..<inputUnits.count, id: \.self) { unit in
-                        Text("\(inputUnits[unit].rawValue)")
+                Picker("", selection: $vm.inputUnitValue) {
+                    ForEach(0..<vm.inputUnits.count, id: \.self) { unit in
+                        Text("\(vm.inputUnits[unit].rawValue)")
                     }
                 }
                 Text("To")
-                Picker("", selection: $outputUnitValue) {
-                    ForEach(0..<outputUnits.count, id: \.self) { unit in
-                        Text("\(outputUnits[unit].rawValue)")
+                Picker("", selection: $vm.outputUnitValue) {
+                    ForEach(0..<vm.outputUnits.count, id: \.self) { unit in
+                        Text("\(vm.outputUnits[unit].rawValue)")
                     }
                 }
             }
