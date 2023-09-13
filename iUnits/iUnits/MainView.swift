@@ -7,7 +7,16 @@
 
 import SwiftUI
 
-//enum 
+enum Category: String, CaseIterable {
+    case length
+    case measurement
+    case speed
+    case area
+    case volumen
+    case mass
+    case temperature
+    case  pressure
+}
 
 struct Unit: Identifiable {
     var id = UUID()
@@ -21,11 +30,11 @@ class UnitViewModel: ObservableObject {
     
     init() {
         images = [
-            Unit(image: "ruler", name: "Lenght"),
+            Unit(image: "ruler", name: "Length"),
             Unit(image: "water.waves", name: "Measurement"),
             Unit(image: "speedometer", name: "Speed"),
             Unit(image: "triangle", name: "Area"),
-            Unit(image: "cube.transparent", name: "Area"),
+            Unit(image: "cube.transparent", name: "Volumen"),
             Unit(image: "soccerball.circle.inverse", name: "Mass"),
             Unit(image: "t.circle", name: "Temperature"),
             Unit(image: "backpack.circle", name: "Pressure")
@@ -40,21 +49,16 @@ struct MainView: View {
         Array(repeating: GridItem(.flexible()), count: 2)
     }
     
-    @StateObject private var vm = UnitViewModel()
-    
     var body: some View {
         NavigationView {
             ScrollView(.vertical) {
                 LazyVGrid(columns: adaptiveColumns, spacing: 10) {
-                    ForEach(vm.images) { unit in
-                        GridItemView(unit: unit)
-                            .onTapGesture {
-                                print("tap")
-                                self.vm.isPresented = unit
-                            }
-                    }
-                    .fullScreenCover(item: $vm.isPresented) { unit in
-                        GridItemDetailView(image: unit.image)
+                    ForEach(Category.allCases, id: \.self) { category in
+                        NavigationLink {
+                            CaculationsView(vm: CalculationsViewModel(category))
+                        } label: {
+                            GridItemView(unit: category)
+                        }
                     }
                 }
                 .padding()
@@ -74,29 +78,16 @@ struct MainView_Previews: PreviewProvider {
 
 struct GridItemView: View {
     
-    var unit: Unit
-    
+    var unit: Category
+
     var body: some View {
-        VStack(alignment: .center) {
-            VStack(alignment: .leading) {
-                HStack {
-                    Spacer()
-                    VStack {
-                        Image(systemName: unit.image)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                    }
-                    .frame(width: 80, height: 50)
-                    
-                }
-                
-                Spacer()
-                
-                Text(unit.name)
+        VStack {
+            Spacer()
+            VStack {
+                Text(unit.rawValue.capitalized)
                     .font(.title2)
                     .fontWeight(.bold)
             }
-            
         }
         .frame(height: 150)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)

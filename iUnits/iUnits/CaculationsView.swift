@@ -28,6 +28,12 @@ class CalculationsViewModel: ObservableObject {
     @Published var inputUnits: [Length] = [.millimeters, .inches, .centimeters, .feet, .meters, .yards, .kilometers, .miles]
     @Published var outputUnits: [Length] = [.millimeters, .inches, .centimeters, .feet, .meters, .yards, .kilometers, .miles]
     
+    var catergory: Category
+    
+    init(_ category: Category) {
+        self.catergory = category
+    }
+    
     var result: String {
         
         var output = ""
@@ -78,11 +84,11 @@ class CalculationsViewModel: ObservableObject {
 
 struct CaculationsView: View {
     
-    @StateObject private var vm: CalculationsViewModel
+    @StateObject var vm: CalculationsViewModel
     
-    init() {
-        self._vm = StateObject(wrappedValue: CalculationsViewModel())
-    }
+//    init() {
+//        self._vm = StateObject(wrappedValue: CalculationsViewModel())
+//    }
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -104,29 +110,39 @@ struct CaculationsView: View {
             }
             .padding(.vertical)
             
-            
-            VStack(alignment: .leading)  {
-                Text("From")
-                Picker("", selection: $vm.inputUnitValue) {
-                    ForEach(0..<vm.inputUnits.count, id: \.self) { unit in
-                        Text("\(vm.inputUnits[unit].rawValue)")
+            Form {
+                Section("Selection") {
+                    VStack(alignment: .leading)  {
+                        HStack {
+                            Text("From")
+                            Picker("", selection: $vm.inputUnitValue) {
+                                ForEach(0..<vm.inputUnits.count, id: \.self) { unit in
+                                    Text("\(vm.inputUnits[unit].rawValue)")
+                                }
+                            }
+                        }
+                        HStack {
+                            Text("To")
+                            Picker("", selection: $vm.outputUnitValue) {
+                                ForEach(0..<vm.outputUnits.count, id: \.self) { unit in
+                                    Text("\(vm.outputUnits[unit].rawValue)")
+                                }
+                            }
+                        }
+                        
                     }
+                    .padding(.horizontal)
                 }
-                Text("To")
-                Picker("", selection: $vm.outputUnitValue) {
-                    ForEach(0..<vm.outputUnits.count, id: \.self) { unit in
-                        Text("\(vm.outputUnits[unit].rawValue)")
-                    }
-                }
+                
             }
-            .padding(.horizontal)
+            
             Spacer()
-        }
+        }.navigationTitle(vm.catergory.rawValue.capitalized)
     }
 }
 
 struct CaculationsView_Previews: PreviewProvider {
     static var previews: some View {
-        CaculationsView()
+        CaculationsView(vm: CalculationsViewModel(.length))
     }
 }
