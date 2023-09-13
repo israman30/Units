@@ -23,7 +23,7 @@ struct MainView: View {
                             CaculationsView(vm: CalculationsViewModel(category))
                         } label: {
                             GridItemView(unit: category)
-                        }
+                        }.tint(Color(.label))
                     }
                 }
                 .padding()
