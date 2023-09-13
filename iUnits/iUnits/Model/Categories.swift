@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Category: String, CaseIterable {
+enum UnitCategories: String, CaseIterable {
     case length
     case measurement
     case speed

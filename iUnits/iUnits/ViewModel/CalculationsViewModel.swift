@@ -17,10 +17,14 @@ class CalculationsViewModel: ObservableObject {
     @Published var inputUnits: [Length] = [.millimeters, .inches, .centimeters, .feet, .meters, .yards, .kilometers, .miles]
     @Published var outputUnits: [Length] = [.millimeters, .inches, .centimeters, .feet, .meters, .yards, .kilometers, .miles]
     
-    var catergory: Category
+    var unitCatergory: UnitCategories
     
-    init(_ category: Category) {
-        self.catergory = category
+    init(_ unitCategory: UnitCategories) {
+        self.unitCatergory = unitCategory
+    }
+    
+    func convert<T: Dimension>(value: String, fristUnit: T, secondUnit: T) -> Double {
+        Measurement(value: (Double(value) ?? 0.0), unit: fristUnit).converted(to: secondUnit).value
     }
     
     var result: String {

@@ -18,7 +18,7 @@ struct MainView: View {
         NavigationView {
             ScrollView(.vertical) {
                 LazyVGrid(columns: adaptiveColumns, spacing: 10) {
-                    ForEach(Category.allCases, id: \.self) { category in
+                    ForEach(UnitCategories.allCases, id: \.self) { category in
                         NavigationLink {
                             CaculationsView(vm: CalculationsViewModel(category))
                         } label: {
@@ -43,7 +43,7 @@ struct MainView_Previews: PreviewProvider {
 
 struct GridItemView: View {
     
-    var unit: Category
+    var unit: UnitCategories
 
     var body: some View {
         VStack {
