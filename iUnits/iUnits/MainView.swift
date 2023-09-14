@@ -7,6 +7,22 @@
 
 import SwiftUI
 
+struct Unit: Identifiable {
+    var id = UUID()
+    let image: String
+}
+
+class UnitViewModel: ObservableObject {
+    @Published var images = [Unit]()
+    @Published var isPresented: Unit? = nil
+    
+    init() {
+        images = [
+            Unit(image: "ruler"), Unit(image: "water.waves"), Unit(image: "speedometer"), Unit(image: "heat.element.windshield")
+        ]
+    }
+}
+
 struct MainView: View {
     
     var data = Array(1...20)
@@ -14,16 +30,21 @@ struct MainView: View {
         Array(repeating: GridItem(.flexible()), count: 2)
     }
     
+    @StateObject private var vm = UnitViewModel()
+    
     var body: some View {
         NavigationView {
             ScrollView(.vertical) {
                 LazyVGrid(columns: adaptiveColumns, spacing: 10) {
-                    ForEach(UnitCategories.allCases, id: \.self) { category in
-                        NavigationLink {
-                            CaculationsView(vm: CalculationsViewModel(category))
-                        } label: {
-                            GridItemView(unit: category)
-                        }.tint(Color(.label))
+                    ForEach(vm.images) { unit in
+                        GridItemView(image: unit.image)
+                            .onTapGesture {
+                                print("tap")
+                                self.vm.isPresented = unit
+                            }
+                    }
+                    .fullScreenCover(item: $vm.isPresented) { unit in
+                        GridItemDetailView(image: unit.image)
                     }
                 }
                 .padding()
@@ -43,16 +64,14 @@ struct MainView_Previews: PreviewProvider {
 
 struct GridItemView: View {
     
-    var unit: UnitCategories
-
+    var image: String
+    
     var body: some View {
-        VStack {
+        ZStack(alignment: .center) {
             Spacer()
-            VStack {
-                Text(unit.rawValue.capitalized)
-                    .font(.title2)
-                    .fontWeight(.bold)
-            }
+            Image(systemName: image)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
         }
         .frame(height: 150)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)

@@ -7,10 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4D0991EE2AAE8DDB001CA453 /* CaculationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0991ED2AAE8DDB001CA453 /* CaculationsView.swift */; };
-		4D09920C2AB147A8001CA453 /* CalculationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D09920B2AB147A8001CA453 /* CalculationsViewModel.swift */; };
-		4D09920F2AB147D2001CA453 /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D09920E2AB147D2001CA453 /* Categories.swift */; };
-		4D0992112AB14802001CA453 /* Units.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0992102AB14802001CA453 /* Units.swift */; };
 		4D15AE5C29FAEDA6006E0692 /* iUnitsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D15AE5B29FAEDA6006E0692 /* iUnitsApp.swift */; };
 		4D15AE5E29FAEDA6006E0692 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D15AE5D29FAEDA6006E0692 /* ContentView.swift */; };
 		4D15AE6029FAEDA7006E0692 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D15AE5F29FAEDA7006E0692 /* Assets.xcassets */; };
@@ -19,14 +15,9 @@
 		4D15AE6829FAEDA7006E0692 /* iUnits.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4D15AE6629FAEDA7006E0692 /* iUnits.xcdatamodeld */; };
 		4D15AE6F29FAF083006E0692 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D15AE6E29FAF083006E0692 /* MainView.swift */; };
 		4D15AE7129FB6218006E0692 /* GridItemDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D15AE7029FB6218006E0692 /* GridItemDetailView.swift */; };
-		4D15AE7329FB6C59006E0692 /* UnitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D15AE7229FB6C59006E0692 /* UnitView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4D0991ED2AAE8DDB001CA453 /* CaculationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaculationsView.swift; sourceTree = "<group>"; };
-		4D09920B2AB147A8001CA453 /* CalculationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationsViewModel.swift; sourceTree = "<group>"; };
-		4D09920E2AB147D2001CA453 /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
-		4D0992102AB14802001CA453 /* Units.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Units.swift; sourceTree = "<group>"; };
 		4D15AE5829FAEDA6006E0692 /* iUnits.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iUnits.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D15AE5B29FAEDA6006E0692 /* iUnitsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iUnitsApp.swift; sourceTree = "<group>"; };
 		4D15AE5D29FAEDA6006E0692 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -36,7 +27,6 @@
 		4D15AE6729FAEDA7006E0692 /* iUnits.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iUnits.xcdatamodel; sourceTree = "<group>"; };
 		4D15AE6E29FAF083006E0692 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		4D15AE7029FB6218006E0692 /* GridItemDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridItemDetailView.swift; sourceTree = "<group>"; };
-		4D15AE7229FB6C59006E0692 /* UnitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,42 +40,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4D0992092AB14773001CA453 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				4D0992102AB14802001CA453 /* Units.swift */,
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
-		4D09920A2AB1478B001CA453 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				4D09920B2AB147A8001CA453 /* CalculationsViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		4D09920D2AB147C1001CA453 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				4D09920E2AB147D2001CA453 /* Categories.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		4D0992122AB1482B001CA453 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				4D15AE7029FB6218006E0692 /* GridItemDetailView.swift */,
-				4D15AE6E29FAF083006E0692 /* MainView.swift */,
-				4D15AE5D29FAEDA6006E0692 /* ContentView.swift */,
-				4D0991ED2AAE8DDB001CA453 /* CaculationsView.swift */,
-				4D15AE7229FB6C59006E0692 /* UnitView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		4D15AE4F29FAEDA6006E0692 = {
 			isa = PBXGroup;
 			children = (
@@ -105,11 +59,10 @@
 		4D15AE5A29FAEDA6006E0692 /* iUnits */ = {
 			isa = PBXGroup;
 			children = (
-				4D0992092AB14773001CA453 /* Utils */,
-				4D09920D2AB147C1001CA453 /* Model */,
-				4D0992122AB1482B001CA453 /* View */,
-				4D09920A2AB1478B001CA453 /* ViewModel */,
 				4D15AE5B29FAEDA6006E0692 /* iUnitsApp.swift */,
+				4D15AE5D29FAEDA6006E0692 /* ContentView.swift */,
+				4D15AE6E29FAF083006E0692 /* MainView.swift */,
+				4D15AE7029FB6218006E0692 /* GridItemDetailView.swift */,
 				4D15AE5F29FAEDA7006E0692 /* Assets.xcassets */,
 				4D15AE6429FAEDA7006E0692 /* Persistence.swift */,
 				4D15AE6629FAEDA7006E0692 /* iUnits.xcdatamodeld */,
@@ -196,17 +149,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D0992112AB14802001CA453 /* Units.swift in Sources */,
-				4D09920C2AB147A8001CA453 /* CalculationsViewModel.swift in Sources */,
 				4D15AE6529FAEDA7006E0692 /* Persistence.swift in Sources */,
-				4D0991EE2AAE8DDB001CA453 /* CaculationsView.swift in Sources */,
 				4D15AE7129FB6218006E0692 /* GridItemDetailView.swift in Sources */,
 				4D15AE5E29FAEDA6006E0692 /* ContentView.swift in Sources */,
 				4D15AE5C29FAEDA6006E0692 /* iUnitsApp.swift in Sources */,
 				4D15AE6F29FAF083006E0692 /* MainView.swift in Sources */,
-				4D09920F2AB147D2001CA453 /* Categories.swift in Sources */,
 				4D15AE6829FAEDA7006E0692 /* iUnits.xcdatamodeld in Sources */,
-				4D15AE7329FB6C59006E0692 /* UnitView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
