@@ -56,7 +56,7 @@ struct CaculationsView: View {
             }
             Spacer()
         }
-        .navigationTitle(vm.catergory.rawValue.capitalized)
+        .navigationTitle(vm.unitCatergory.rawValue.capitalized)
     }
 }
 
